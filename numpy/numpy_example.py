@@ -1,0 +1,38 @@
+import numpy as np
+
+np_array = np.array([10,15,30,45,60])
+print(np_array)
+np_array2 = np.arange(5,15)
+print(np_array2)
+np_array3 = np.arange(50,100,5)
+print(np_array3)
+np_array4 = np.zeros(10)
+print(np_array4)
+np_array5 = np.ones(10)
+print(np_array5)
+np_array6 = np.linspace(0,100,5)
+print(np_array6)
+np_array7 = np.random.randint(10,30,5)
+print(np_array7)
+np_array8 = np.random.randn(10)
+print(np_array8)
+np_array9 = np.random.randint(10,50,15).reshape(3,5)
+print(np_array9)
+sumv = np_array9.sum(axis=1)
+sumh = np_array9.sum(axis=0)
+print(sumh,sumv)
+print(np_array9.max())
+print(np_array9.min())
+print(np_array9.mean())
+print(np_array9.argmin())
+
+arr = np.arange(10,20)
+print(arr[:3])
+print(arr[::-1])
+
+print(np_array9[0,:])
+print(np_array9[:,0])
+print(np_array9 **2)
+
+cift = np_array9[np_array9 % 2 == 0]
+print(cift[cift>0])
