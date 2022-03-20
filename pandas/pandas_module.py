@@ -11,7 +11,8 @@
 -->Dataframe'ler (df) serilerin birleşmiş halleridir
 """
 import pandas as pd
-numbers = [20,30,40,50,]
+import numpy as np
+numbers = [20,30,40,50]
 
 #pandas_series = pd.Series(numbers)
 #type olarak series çıktısı verir
@@ -22,6 +23,7 @@ pandas_series = pd.Series(numbers, [1,2,3,4])
 #Örneğin 4 dizi elemanına 4 adet sayı atandı ve çıktı olarak verildi
 dict = {'a':10,'b':20,'c':30,'d':40}
 pandas_dict = pd.Series(dict)
+print(pandas_dict)
 #Bu şekilde sözlük olarak seri oluşturursak key value bilgilerine göre seriyi oluşturur
 result = pandas_dict['a':'c']
 result = pandas_dict.ndim#Kaç boyutlu ?
@@ -30,8 +32,35 @@ result = pandas_dict.max()
 result = pandas_dict.sum()
 result = pandas_dict %2 == 0
 
-
-
 print(pandas_series)
 print(pandas_dict)
+print(result)
+
+"""
+df = pd.DataFrame(np.random.randn(5,5), index=["a","b","c","d","e"], columns=["Column1","Column2","Column3","Column4","Column5"])
+
+result = df["Column1"]#Selected first column
+# Add new column
+df['Column6'] = pd.Series(np.random.randn(5),index=["a","b","c","d","e"])
+result = df
+df["Column7"] = df['Column1'] + df['Column2']
+print(result)
+"""
+
+# Data Filter
+data = np.random.randint(10,100,75).reshape(15,5)
+df = pd.DataFrame(data,columns=["Column1","Column2","Column3","Column4","Column5"])
+"""
+print(df)
+print(df.columns)#Kolon isimlerini çıktı olarak aktarır
+print(df.head(5))#İlk 5 satırı çıktı verir
+print(df.tail(5))#Son 5 satırı çıktı verir
+print(df["Column1"].head(6))#Secilen kolondan ilk 6 kayıt
+print(df[["Column1","Column2"]])#Birden fazla kolon seçimi
+print(df[5:15]["Column4"].head(3))
+"""
+result = df>50#True False geri döndürür
+result = df[df>50]#Büyük olanlar gösterilir, olmayanalar nan gösterir
+result = df[(df["Column2"]>30) & (df["Column3"]>50)]
+result = df.query("Column2 > 30 & Column3 > 50")#Koşul ile sorgu yapma işlemleri query ile yapılır
 print(result)
