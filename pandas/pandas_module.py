@@ -32,9 +32,9 @@ result = pandas_dict.max()
 result = pandas_dict.sum()
 result = pandas_dict %2 == 0
 
-print(pandas_series)
-print(pandas_dict)
-print(result)
+#print(pandas_series)
+#print(pandas_dict)
+#print(result)
 
 """
 df = pd.DataFrame(np.random.randn(5,5), index=["a","b","c","d","e"], columns=["Column1","Column2","Column3","Column4","Column5"])
@@ -63,4 +63,13 @@ result = df>50#True False geri döndürür
 result = df[df>50]#Büyük olanlar gösterilir, olmayanalar nan gösterir
 result = df[(df["Column2"]>30) & (df["Column3"]>50)]
 result = df.query("Column2 > 30 & Column3 > 50")#Koşul ile sorgu yapma işlemleri query ile yapılır
+
+# Dataframe Grupby
+
+result = df['Column1'].sum()#Secilen kolonu toplar
+result = df.groupby(['Column1']).groups#Gruplandırma
+result = df.groupby(['Column2']).mean()
+result = df.groupby('Column2').max()
+
+
 print(result)
